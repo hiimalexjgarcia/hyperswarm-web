@@ -17,14 +17,20 @@ const server = http.createServer(function onRequest (req, res) {
     .pipe(res)
 })
 
-const wsServer = new HyperswarmServer()
+const wsServer = new HyperswarmServer({
+  bootstrap: [
+    '64.176.213.246:49737',
+    '165.227.31.24:49737',
+    '45.79.67.225:49737'
+  ]
+})
 
 wsServer.listenOnServer(server)
 
 const port = argv.port ? parseInt(argv.port, 10) : DEFAULT_PORT
 
-console.log(`Listening on ws://localhost:${port}`)
-console.log(`-> Proxy available on ws://localhost:${port}/proxy`)
-console.log(`-> Signal available on ws://localhost:${port}/signal`)
+console.log(`Listening on ws://0.0.0.0:${port}`)
+console.log(`-> Proxy available on ws://0.0.0.0:${port}/proxy`)
+console.log(`-> Signal available on ws://0.0.0.0:${port}/signal`)
 
 server.listen(port)

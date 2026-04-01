@@ -1,0 +1,30 @@
+services:
+  node:
+    image: "hyperswarm-web:latest"
+    user: "node"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - net
+      - traefik-public
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.hyperswarm-web-http.rule=Host(`hyperswarm-web.hiimalexjgarcia.dev`)
+        - traefik.http.routers.hyperswarm-web-http.entrypoints=http
+        - traefik.http.routers.hyperswarm-web-http.middlewares=https-redirect
+        - traefik.http.routers.hyperswarm-web-https.rule=Host(`hyperswarm-web.hiimalexjgarcia.dev`)
+        - traefik.http.routers.hyperswarm-web-https.entrypoints=https
+        - traefik.http.routers.hyperswarm-web-https.tls=true
+        - traefik.http.routers.hyperswarm-web-https.tls.certresolver=le
+        - traefik.http.services.hyperswarm-web.loadbalancer.server.port=4977
+    command: ["npm", "start"]
+
+networks:
+  net:
+    driver: overlay
+    attachable: true
+  traefik-public:
+    external: true
