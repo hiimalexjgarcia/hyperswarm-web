@@ -10,7 +10,13 @@ let server = null
 let port = null
 test('Setup', async function (t) {
   // Initialize local proxy
-  server = new HyperswarmServer()
+  server = new HyperswarmServer({
+  bootstrap: [
+    '64.176.213.246:49737',
+    '165.227.31.24:49737',
+    '45.79.67.225:49737'
+  ]
+})
   port = await getPort()
   server.listen(port)
   t.end()

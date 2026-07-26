@@ -1,6 +1,6 @@
 {
   "name": "hyperswarm-web",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Implementation of the hyperswarm API for use in web browsers",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hiimalexjgarcia/hyperswarm-web.git"
+    "url": "git+https://github.com/RangerMauve/hyperswarm-web.git"
   },
   "keywords": [
     "hyperswarm",
@@ -24,18 +24,20 @@
   "author": "rangermauve",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hiimalexjgarcia/hyperswarm-web/issues"
+    "url": "https://github.com/RangerMauve/hyperswarm-web/issues"
   },
-  "homepage": "https://github.com/hiimalexjgarcia/hyperswarm-web#readme",
+  "homepage": "https://github.com/RangerMauve/hyperswarm-web#readme",
   "dependencies": {
     "@geut/discovery-swarm-webrtc": "^4.0.1",
     "duplexpair": "^1.0.1",
+    "hyperswarm-proxy": "git+https://github.com/hiimalexjgarcia/hyperswarm-proxy.git#master",
     "hyperswarm-proxy-ws": "^1.2.0",
     "minimist": "^1.2.0",
     "send": "^1.2.1",
     "websocket-stream": "^5.5.2"
   },
   "devDependencies": {
+    "@mapbox/node-pre-gyp": "^2.0.3",
     "get-port": "^5.1.0",
     "hyperswarm": "^2.4.0",
     "tape": "^4.12.1",
